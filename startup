@@ -1,0 +1,16 @@
+#!/bin/sh
+
+addgroup -g ${GID} lufi && adduser -H -s /bin/sh -D -G lufi -u ${UID} lufi
+
+mkdir -p /usr/lufi/data /usr/lufi/files
+chown -R lufi:lufi /usr/lufi
+
+sed -i -e 's|<secret>|'${SECRET}'|' \
+        -e 's|<contact>|'${CONTACT}'|' \
+        -e 's|<max_file_size>|'${MAX_FILE_SIZE}'|' \
+        -e 's|<webroot>|'${WEBROOT}'|' \
+        -e 's|<default_delay>|'${DEFAULT_DELAY}'|' \
+        -e 's|<max_delay>|'${MAX_DELAY}'|' /usr/lufi/lufi.conf
+
+cd /usr/lufi
+exec su-exec lufi:lufi /sbin/tini -- /usr/local/bin/carton exec hypnotoad -f /usr/lufi/script/lufi --listen http://0.0.0.0:8081
