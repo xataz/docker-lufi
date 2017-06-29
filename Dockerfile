@@ -12,7 +12,7 @@ ENV GID=991 \
 LABEL description="lufi based on alpine" \
       tags="latest" \
       maintainer="xataz <https://github.com/xataz>" \
-      build_ver="2017062601"
+      build_ver="2017062901"
 
 RUN BUILD_DEPS="build-base \
                 libressl-dev \
