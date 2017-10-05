@@ -12,7 +12,7 @@ ENV GID=991 \
 LABEL description="lufi based on alpine" \
       tags="latest" \
       maintainer="xataz <https://github.com/xataz>" \
-      build_ver="2017100501"
+      build_ver="2017100502"
 
 RUN BUILD_DEPS="build-base \
                 libressl-dev \
@@ -21,8 +21,9 @@ RUN BUILD_DEPS="build-base \
                 tar \
                 perl-dev \
                 libidn-dev \
+                postgresql-dev \
                 wget" \
-    && apk add -U ${BUILD_DEPS} \
+    && apk add --no-cache ${BUILD_DEPS} \
                 libressl \
                 perl \
                 libidn \
@@ -37,7 +38,7 @@ RUN BUILD_DEPS="build-base \
     && cd /usr/lufi \
     && rm -rf cpanfile.snapshot \
     && carton install \
-    && apk del -y ${BUILD_DEPS} \
+    && apk del --no-cache ${BUILD_DEPS} \
     && rm -rf /var/cache/apk/* /root/.cpan* /usr/lufi/local/cache/* /usr/lufi/utilities
     
 VOLUME /usr/lufi/files /usr/lufi/data
