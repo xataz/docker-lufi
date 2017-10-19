@@ -12,7 +12,7 @@ ENV GID=991 \
 LABEL description="lufi based on alpine" \
       tags="latest" \
       maintainer="xataz <https://github.com/xataz>" \
-      build_ver="2017100502"
+      build_ver="2017101901"
 
 RUN BUILD_DEPS="build-base \
                 libressl-dev \
@@ -32,6 +32,7 @@ RUN BUILD_DEPS="build-base \
                 perl-net-ssleay \
                 tini \
                 su-exec \
+                postgresql-libs \
     && echo | cpan \
     && cpan install Carton \
     && git clone https://git.framasoft.org/luc/lufi.git /usr/lufi \
