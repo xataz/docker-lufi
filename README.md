@@ -1,4 +1,4 @@
-![lufi](https://git.framasoft.org/uploads/project/avatar/1998/lufi.png =250x)
+![lufi](https://fiat-tux.fr/wp-content/uploads/lufi196.png)
 
 [![Build Status](https://drone.xataz.net/api/badges/xataz/docker-lufi/status.svg)](https://drone.xataz.net/xataz/docker-lufi)
 [![](https://images.microbadger.com/badges/image/xataz/lufi.svg)](https://microbadger.com/images/xataz/lufi "Get your own image badge on microbadger.com")
@@ -46,18 +46,18 @@ Tips : you can use the following command to generate SECRET. `date +%s | md5sum 
 * /usr/lufi/themes : Location of themes
 
 ### Ports
-* 8080
+* 8081
 
 ## Usage
 ### Simple launch
 ```shell
-docker run -d -p 8080:8080 xataz/lufi
+docker run -d -p 8081:8081 xataz/lufi
 ```
-URI access : http://XX.XX.XX.XX:8080
+URI access : http://XX.XX.XX.XX:8081
 
 ### Advanced launch
 ```shell
-docker run -d -p 8181:8080 \
+docker run -d -p 8181:8081 \
 	-v /docker/config/lufi/data:/data \
     -v /docker/data/lufi:/files \
 	-e UID=1001 \
