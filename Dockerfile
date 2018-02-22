@@ -12,7 +12,7 @@ ENV GID=991 \
 LABEL description="lufi based on alpine" \
       tags="latest" \
       maintainer="xataz <https://github.com/xataz>" \
-      build_ver="2018020901" \
+      build_ver="201802220331" \
       commit="7efebff4bfa3722796a80a783fb332d6e50d41de"
 
 RUN BUILD_DEPS="build-base \
