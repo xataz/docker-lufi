@@ -7,7 +7,9 @@ ENV GID=991 \
     MAX_FILE_SIZE=1000000000 \
     WEBROOT=/ \
     DEFAULT_DELAY=1 \
-    MAX_DELAY=0
+    MAX_DELAY=0 \
+    THEME=default \
+    ALLOW_PWD_ON_FILES=1
 
 LABEL description="lufi based on alpine" \
       tags="latest" \

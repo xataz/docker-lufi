@@ -2,19 +2,23 @@
 
 addgroup -g ${GID} lufi && adduser -H -s /bin/sh -D -G lufi -u ${UID} lufi
 
-mkdir -p /usr/lufi/data /usr/lufi/files
-chown -R lufi:lufi /usr/lufi
+mkdir -p /usr/lufi/data /usr/lufi/files /themes
+chown -R lufi:lufi /usr/lufi /themes
 
 sed -i -e 's|<secret>|'${SECRET}'|' \
         -e 's|<contact>|'${CONTACT}'|' \
         -e 's|<max_file_size>|'${MAX_FILE_SIZE}'|' \
         -e 's|<webroot>|'${WEBROOT}'|' \
         -e 's|<default_delay>|'${DEFAULT_DELAY}'|' \
-        -e 's|<max_delay>|'${MAX_DELAY}'|' /usr/lufi/lufi.conf
+        -e 's|<max_delay>|'${MAX_DELAY}'|' \
+        -e 's|<theme>|'${THEME}'|' \
+        -e 's|<allow_pwd_on_files>|'${ALLOW_PWD_ON_FILES}'|' /usr/lufi/lufi.conf
 
-
-# Custom Conf
-
+if [ -e /themes ]; then
+    for theme in $(ls /themes); do
+        ln -s /themes/$theme /usr/lufi/themes/$theme
+    done
+fi
 
 cd /usr/lufi
 exec su-exec lufi:lufi /sbin/tini -- /usr/local/bin/carton exec hypnotoad -f /usr/lufi/script/lufi
