@@ -20,8 +20,7 @@ if [ -e /themes ]; then
     done
 fi
 
-# Launch cron with a verbosity level at 2 ("Most verbose:0, default:8" according crond -h)
-crond -l 2 -d 2
+crond -L /var/log/crond.log
 
 cd /usr/lufi
 exec su-exec lufi:lufi /sbin/tini -- /usr/local/bin/carton exec hypnotoad -f /usr/lufi/script/lufi
