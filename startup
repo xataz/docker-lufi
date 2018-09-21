@@ -12,7 +12,8 @@ sed -i -e 's|<secret>|'${SECRET}'|' \
         -e 's|<default_delay>|'${DEFAULT_DELAY}'|' \
         -e 's|<max_delay>|'${MAX_DELAY}'|' \
         -e 's|<theme>|'${THEME}'|' \
-        -e 's|<allow_pwd_on_files>|'${ALLOW_PWD_ON_FILES}'|' /usr/lufi/lufi.conf
+        -e 's|<allow_pwd_on_files>|'${ALLOW_PWD_ON_FILES}'|' \
+        -e 's|<policy_when_full>|'${POLICY_WHEN_FULL}'|' /usr/lufi/lufi.conf
 
 if [ -e /themes ]; then
     for theme in $(ls /themes); do
