@@ -52,5 +52,7 @@ EXPOSE 8081
 ADD startup /usr/local/bin/startup
 ADD lufi.conf /usr/lufi/lufi.conf
 RUN chmod +x /usr/local/bin/startup
+ADD cron_script /etc/periodic/hourly/cron_script
+RUN chmod 755 /etc/periodic/hourly/cron_script
 
 CMD ["/usr/local/bin/startup"]

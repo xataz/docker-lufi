@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Executing Lufi's cron jobs following the official documentation https://framagit.org/luc/lufi/wikis/cron-jobs
+
+cd /usr/lufi
+
+# Delete IP adresses from database
+su lufi -c "carton exec script/lufi cron cleanbdd --mode production"
+
+# Delete expired files
+su lufi -c "carton exec script/lufi cron cleanfiles --mode production"
+
+# Watch the size of the files directory
+su lufi -c "carton exec script/lufi watch cleanfiles --mode production"
+
