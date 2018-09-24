@@ -9,7 +9,8 @@ ENV GID=991 \
     DEFAULT_DELAY=1 \
     MAX_DELAY=0 \
     THEME=default \
-    ALLOW_PWD_ON_FILES=1
+    ALLOW_PWD_ON_FILES=1 \
+    POLICY_WHEN_FULL=warn
 
 LABEL description="lufi based on alpine" \
       tags="latest" \
