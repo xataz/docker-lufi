@@ -1,5 +1,7 @@
 FROM alpine:3.8
 
+ARG LUFI_VERSION=0.02.2
+
 ENV GID=991 \
     UID=991 \
     SECRET=0423bab3aea2d87d5eedd9a4e8173618 \
@@ -41,6 +43,8 @@ RUN BUILD_DEPS="build-base \
     && cpan install Carton \
     && git clone https://git.framasoft.org/luc/lufi.git /usr/lufi \
     && cd /usr/lufi \
+# checkout a specific tag thanks to https://stackoverflow.com/a/792027/535203
+    && git checkout tags/${LUFI_VERSION} -b ${LUFI_VERSION} \
     && rm -rf cpanfile.snapshot \
     && carton install \
     && apk del --no-cache ${BUILD_DEPS} \
