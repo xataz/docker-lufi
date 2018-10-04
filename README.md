@@ -43,6 +43,7 @@ docker build -t xataz/lufi github.com/xataz/docker-lufi.git#master
 Tips : you can use the following command to generate SECRET. `date +%s | md5sum | head -c 32`
 
 ### Volumes
+* /usr/lufi/lufi.conf : lufi's configuration file is here
 * /usr/lufi/data : lufi's database is here
 * /usr/lufi/files : Location of uploaded files
 * /themes : Location of themes
