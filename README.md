@@ -1,4 +1,4 @@
-![lufi](https://fiat-tux.fr/wp-content/uploads/lufi196.png)
+![](https://framagit.org/luc/lufi/raw/master/themes/default/public/img/lufi128.png)
 
 [![Build Status](https://drone.xataz.net/api/badges/xataz/docker-lufi/status.svg)](https://drone.xataz.net/xataz/docker-lufi)
 [![](https://images.microbadger.com/badges/image/xataz/lufi.svg)](https://microbadger.com/images/xataz/lufi "Get your own image badge on microbadger.com")
@@ -8,10 +8,10 @@
 > If you don't trust, you can build yourself.
 
 ## Tag available
-* latest [(lufi/Dockerfile)](https://github.com/xataz/dockerfiles/blob/master/lufi/Dockerfile)
+* latest [(lufi/Dockerfile)](https://github.com/xataz/docker-lufi/blob/master/Dockerfile)
 
 ## Description
-What is [lufi](https://git.framasoft.org/luc/lufi) ?
+What is [lufi](https://framagit.org/luc/lufi) ?
 
 Lufi means Let's Upload that FIle.
 
@@ -24,7 +24,7 @@ Is that all? No. All the files are encrypted by the browser! It means that your 
 ## BUILD IMAGE
 
 ```shell
-docker build -t xataz/lufi github.com/xataz/dockerfiles.git#master:lufi
+docker build -t xataz/lufi github.com/xataz/docker-lufi.git#master
 ```
 
 ## Configuration
