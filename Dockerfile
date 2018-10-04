@@ -20,7 +20,8 @@ LABEL description="lufi based on alpine" \
       build_ver="201807172121" \
       commit="7efebff4bfa3722796a80a783fb332d6e50d41de"
 
-RUN BUILD_DEPS="build-base \
+RUN apk add --update --no-cache --virtual .build-deps \
+                build-base \
                 libressl-dev \
                 ca-certificates \
                 git \
@@ -28,8 +29,8 @@ RUN BUILD_DEPS="build-base \
                 perl-dev \
                 libidn-dev \
                 postgresql-dev \
-                wget" \
-    && apk add --no-cache ${BUILD_DEPS} \
+                wget \
+    && apk add --update --no-cache \
                 libressl \
                 perl \
                 libidn \
@@ -47,7 +48,7 @@ RUN BUILD_DEPS="build-base \
     && git checkout tags/${LUFI_VERSION} -b ${LUFI_VERSION} \
     && rm -rf cpanfile.snapshot \
     && carton install \
-    && apk del --no-cache ${BUILD_DEPS} \
+    && apk del .build-deps \
     && rm -rf /var/cache/apk/* /root/.cpan* /usr/lufi/local/cache/* /usr/lufi/utilities
     
 VOLUME /usr/lufi/files /usr/lufi/data
