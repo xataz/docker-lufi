@@ -42,10 +42,8 @@ RUN apk add --update --no-cache --virtual .build-deps \
                 postgresql-libs \
     && echo | cpan \
     && cpan install Carton \
-    && git clone https://git.framasoft.org/luc/lufi.git /usr/lufi \
+    && git clone -b ${LUFI_VERSION} https://framagit.org/luc/lufi.git /usr/lufi \
     && cd /usr/lufi \
-# checkout a specific tag thanks to https://stackoverflow.com/a/792027/535203
-    && git checkout tags/${LUFI_VERSION} -b ${LUFI_VERSION} \
     && rm -rf cpanfile.snapshot \
     && carton install \
     && apk del .build-deps \
@@ -55,8 +53,8 @@ VOLUME /usr/lufi/files /usr/lufi/data
 
 EXPOSE 8081
 
-ADD startup /usr/local/bin/startup
-ADD lufi.conf /usr/lufi/lufi.conf
+COPY startup /usr/local/bin/startup
+COPY lufi.conf /usr/lufi/lufi.conf
 RUN chmod +x /usr/local/bin/startup
 
 CMD ["/usr/local/bin/startup"]
