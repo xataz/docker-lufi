@@ -47,9 +47,9 @@ RUN apk add --update --no-cache --virtual .build-deps \
     && rm -rf cpanfile.snapshot \
     && carton install \
     && apk del .build-deps \
-    && rm -rf /var/cache/apk/* /root/.cpan* /usr/lufi/local/cache/* /usr/lufi/utilities
-    
-VOLUME /usr/lufi/files /usr/lufi/data
+    && rm -rf /var/cache/apk/* /root/.cpan* /usr/lufi/local/cache/*
+
+VOLUME /usr/lufi/data /usr/lufi/files
 
 EXPOSE 8081
 
