@@ -39,6 +39,9 @@ docker build -t xataz/lufi github.com/xataz/dockerfiles.git#master:lufi
 * MAX_DELAY : number of days after which the images will be deleted (default : 0 for unlimited)
 * THEME : theme for lufi (default : default)
 * ALLOW_PWD_ON_FILES : Enable download password (default : 1 (0 => disable, 1 => enable))
+* REPORT : recipient for the report file feature (default : report@example.com)
+* MAIL_HOW : valid values are 'sendmail' and 'smtp' (default : smtp)
+* MAIL_HOWARGS : if smtp, smtp host (default : smtp)
 
 Tips : you can use the following command to generate SECRET. `date +%s | md5sum | head -c 32`
 

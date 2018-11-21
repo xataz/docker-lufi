@@ -1,6 +1,6 @@
 FROM alpine:3.8
 
-ARG LUFI_VERSION=0.02.2
+ARG LUFI_VERSION=0.03.3
 
 ENV GID=991 \
     UID=991 \
@@ -12,7 +12,11 @@ ENV GID=991 \
     MAX_DELAY=0 \
     THEME=default \
     ALLOW_PWD_ON_FILES=1 \
-    POLICY_WHEN_FULL=warn
+	MAIL_SENDER=no-reply@lufi.io \
+    POLICY_WHEN_FULL=warn \
+	MAIL_HOW=smtp \
+	MAIL_HOWARGS=smtp \
+	REPORT=report@example.com
 
 LABEL description="lufi based on alpine" \
       tags="latest" \
@@ -28,6 +32,7 @@ RUN BUILD_DEPS="build-base \
                 perl-dev \
                 libidn-dev \
                 postgresql-dev \
+				mariadb-dev \
                 wget" \
     && apk add --no-cache ${BUILD_DEPS} \
                 libressl \
@@ -39,6 +44,7 @@ RUN BUILD_DEPS="build-base \
                 tini \
                 su-exec \
                 postgresql-libs \
+				mariadb-dev \
     && echo | cpan \
     && cpan install Carton \
     && git clone https://git.framasoft.org/luc/lufi.git /usr/lufi \
@@ -48,7 +54,7 @@ RUN BUILD_DEPS="build-base \
     && rm -rf cpanfile.snapshot \
     && carton install \
     && apk del --no-cache ${BUILD_DEPS} \
-    && rm -rf /var/cache/apk/* /root/.cpan* /usr/lufi/local/cache/* /usr/lufi/utilities
+    && rm -rf /var/cache/apk/* /root/.cpan* /usr/lufi/local/cache/*
     
 VOLUME /usr/lufi/files /usr/lufi/data
 
