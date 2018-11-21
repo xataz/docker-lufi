@@ -13,6 +13,10 @@ sed -i -e 's|<secret>|'${SECRET}'|' \
         -e 's|<max_delay>|'${MAX_DELAY}'|' \
         -e 's|<theme>|'${THEME}'|' \
         -e 's|<allow_pwd_on_files>|'${ALLOW_PWD_ON_FILES}'|' \
+		-e 's|<mail_sender>|'${MAIL_SENDER}'|' \
+		-e 's|<mail_how>|'${MAIL_HOW}'|' \
+		-e 's|<mail_howargs>|'${MAIL_HOWARGS}'|' \
+		-e 's|<report>|'${REPORT}'|' \
         -e 's|<policy_when_full>|'${POLICY_WHEN_FULL}'|' /usr/lufi/lufi.conf
 
 if [ -e /themes ]; then
