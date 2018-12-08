@@ -2,10 +2,13 @@
 
 addgroup -g ${GID} lufi && adduser -H -s /bin/sh -D -G lufi -u ${UID} lufi
 
-mkdir -p /usr/lufi/data /usr/lufi/files /themes
-chown -R lufi:lufi /usr/lufi /themes
+cd /usr/lufi
+mkdir -p data files /themes
+chown -R lufi:lufi . /themes
 
-sed -i -e 's|<secret>|'${SECRET}'|' \
+# Outputting directly to lufi.conf using "sed -i" when mounted with docker fails.
+echo "$(sed \
+        -e 's|<secret>|'${SECRET}'|' \
         -e 's|<contact>|'${CONTACT}'|' \
         -e 's|<max_file_size>|'${MAX_FILE_SIZE}'|' \
         -e 's|<webroot>|'${WEBROOT}'|' \
@@ -13,13 +16,13 @@ sed -i -e 's|<secret>|'${SECRET}'|' \
         -e 's|<max_delay>|'${MAX_DELAY}'|' \
         -e 's|<theme>|'${THEME}'|' \
         -e 's|<allow_pwd_on_files>|'${ALLOW_PWD_ON_FILES}'|' \
-        -e 's|<policy_when_full>|'${POLICY_WHEN_FULL}'|' /usr/lufi/lufi.conf
+        -e 's|<policy_when_full>|'${POLICY_WHEN_FULL}'|' lufi.conf
+)" > lufi.conf
 
 if [ -e /themes ]; then
     for theme in $(ls /themes); do
-        ln -s /themes/$theme /usr/lufi/themes/$theme
+        ln -s /themes/$theme themes/$theme
     done
 fi
 
-cd /usr/lufi
 exec su-exec lufi:lufi /sbin/tini -- /usr/local/bin/carton exec hypnotoad -f /usr/lufi/script/lufi
