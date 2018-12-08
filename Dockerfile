@@ -1,6 +1,6 @@
 FROM alpine:3.8
 
-ARG LUFI_VERSION=0.02.2
+ARG LUFI_VERSION=0.03.5
 
 ENV GID=991 \
     UID=991 \
@@ -15,10 +15,9 @@ ENV GID=991 \
     POLICY_WHEN_FULL=warn
 
 LABEL description="lufi based on alpine" \
-      tags="latest" \
+      tags="latest 0.03.5 0.03" \
       maintainer="xataz <https://github.com/xataz>" \
-      build_ver="201807172121" \
-      commit="7efebff4bfa3722796a80a783fb332d6e50d41de"
+      build_ver="201812081215"
 
 RUN apk add --update --no-cache --virtual .build-deps \
                 build-base \

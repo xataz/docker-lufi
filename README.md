@@ -8,7 +8,7 @@
 > If you don't trust, you can build yourself.
 
 ## Tag available
-* latest [(lufi/Dockerfile)](https://github.com/xataz/docker-lufi/blob/master/Dockerfile)
+* latest, 0.03.5, 0.03 [(lufi/Dockerfile)](https://github.com/xataz/docker-lufi/blob/master/Dockerfile)
 
 ## Description
 What is [lufi](https://framagit.org/luc/lufi) ?
