@@ -43,7 +43,7 @@ RUN apk add --update --no-cache --virtual .build-deps \
     && cpan install Carton \
     && git clone -b ${LUFI_VERSION} https://framagit.org/luc/lufi.git /usr/lufi \
     && cd /usr/lufi \
-    && echo "Mojo::mysql" >> /usr/lufi/cpanfile \
+    && echo "requires ''Mojo::mysql';" >> /usr/lufi/cpanfile \
     && rm -rf cpanfile.snapshot \
     && carton install \
     && apk del .build-deps \
