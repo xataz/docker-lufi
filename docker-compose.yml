@@ -4,7 +4,7 @@ services:
         image: xataz/lufi
         environment:
             - SECRET=5ec4e381e20ac79220fdba5ab71e4a83
-            - CONTACT=contact@dmwl.net
+            - CONTACT=your@contact.com
             - MAX_DELAY=60
         ports:
             - "8081:8081"
