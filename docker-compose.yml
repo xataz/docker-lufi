@@ -1,0 +1,21 @@
+version: '3'
+services:
+    lufi:
+        image: xataz/lufi
+        build:
+            context: .
+        environment:
+            - SECRET=5ec4e381e20ac79220fdba5ab71e4a83
+            - CONTACT=your@contact.com
+            - MAX_DELAY=60
+        ports:
+            - "8081:8081"
+        restart: always
+        volumes:
+            - db:/usr/lufi/data
+            - files:/usr/lufi/files
+        
+volumes:
+    db:
+    files:
+

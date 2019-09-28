@@ -1,6 +1,6 @@
-FROM alpine:3.8
+FROM alpine:3
 
-ARG LUFI_VERSION=0.03.5
+ARG LUFI_VERSION=0.04.2
 
 ENV GID=991 \
     UID=991 \
@@ -15,9 +15,9 @@ ENV GID=991 \
     POLICY_WHEN_FULL=warn
 
 LABEL description="lufi based on alpine" \
-      tags="latest 0.03.5 0.03" \
+      tags="latest 0.04.2 0.03.5 0.03" \
       maintainer="xataz <https://github.com/xataz>" \
-      build_ver="201812081215"
+      build_ver="201909260845"
 
 RUN apk add --update --no-cache --virtual .build-deps \
                 build-base \
@@ -43,7 +43,7 @@ RUN apk add --update --no-cache --virtual .build-deps \
     && cpan install Carton \
     && git clone -b ${LUFI_VERSION} https://framagit.org/luc/lufi.git /usr/lufi \
     && cd /usr/lufi \
-    && echo "requires ''Mojo::mysql';" >> /usr/lufi/cpanfile \
+    && echo "requires 'Mojo::mysql';" >> /usr/lufi/cpanfile \
     && rm -rf cpanfile.snapshot \
     && carton install \
     && apk del .build-deps \
